@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider {
+            width: 480px;
+            height: 140px;
+            padding: 10px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            background: #eee;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: calc(50vh - 65px) auto 0;
+            overflow: hidden;
+        }
+
+        .arrow {
+            z-index: 200;
+        }
+
+        .slider__inner {
+            width: 390px;
+            overflow: hidden;
+        }
+
+        .slider__list {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .slider__item {
+            list-style: none;
+        }
+
+        .shift__left {
+            transform: translateX(-130px);
+            overflow: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <button class="arrow prev">⇦</button>
+        <div class="slider__inner">
+            <ul class="slider__list">
+                <li class="slider__item"><img class="slider__img" src="./1.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./2.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./3.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./4.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./5.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./6.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./7.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./8.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./9.png" alt="img"></li>
+                <li class="slider__item"><img class="slider__img" src="./10.png" alt="img"></li>
+            </ul>
+        </div>
+        <button class="arrow next">⇨</button>
+    </div>
+
+    <script>
+
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next');
+        let list = document.querySelector('.slider__list');
+        let slides = document.querySelectorAll('.slider__item');
+        let count = 0;
+        let imgWidth = 130;
+
+        next.addEventListener('click', function () {
+            count++;
+            let shift = -1*imgWidth * count + 'px';
+            list.style.transform = `translate(${shift},0)`;
+            if (count >= slides.length) {
+                count = -1;
+            }
+        });
+
+        prev.addEventListener('click', function () {
+            count--;
+            let shift = -1*imgWidth * count + 'px';
+            list.style.transform = `translate(${shift},0)`;
+            if (count < 0) {
+                count = slides.length;
+            }
+        });
+
+    </script>
+</body>
+
+</html>

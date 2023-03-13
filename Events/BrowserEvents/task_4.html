@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            cursor: pointer;
+            text-align: left;
+            margin: 20px 0 0 10px;
+        }
+
+        .nav__click {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .nav__icon_hidden {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-top: 16px solid rgb(14, 48, 14);
+            border-right: 8px solid transparent;
+            margin-right: 5px;
+        }
+
+        .nav__icon {
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-left: 16px solid rgb(14, 48, 14);
+            border-bottom: 8px solid transparent;
+            margin-right: 5px;
+        }
+
+
+        .nav__list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav__click">
+            <div class="nav__icon"></div>
+            <span class="nav__title">Сладости (нажми меня)!</span>
+        </div>
+        <ul class="nav__list hidden">
+            <li class="nav__item">Конфеты</li>
+            <li class="nav__item">Пирожные</li>
+            <li class="nav__item">Мороженое</li>
+            <li class="nav__item">Торт</li>
+            <li class="nav__item">Пончик</li>
+        </ul>
+    </nav>
+
+    <script>
+
+        let clickMenu = document.querySelector('.nav__click');
+        let menu = document.querySelector('.nav__list');
+        let icon = document.querySelector('.nav__icon');
+
+        clickMenu.addEventListener('click', function() {
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('nav__icon');
+            icon.classList.toggle('nav__icon_hidden');
+        }) 
+
+    </script>
+
+</body>
+
+</html>
