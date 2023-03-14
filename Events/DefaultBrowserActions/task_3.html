@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            border: 2px double gray;
+        }
+
+        .small__container {
+            display: flex;
+            justify-content: space-between;
+            width: 554px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <div class="large">
+            <img id="largeImg" src="./img5-lg.jpg" alt="">
+        </div>
+        <div class="small__container">
+            <a class="small" href="./img2-lg.jpg"><img src="./img2-thumb.jpg" alt="img"></a>
+            <a class="small" href="./img3-lg.jpg"><img src="./img3-thumb.jpg" alt="img"></a>
+            <a class="small" href="./img4-lg.jpg"><img src="./img4-thumb.jpg" alt="img"></a>
+            <a class="small" href="./img5-lg.jpg"><img src="./img5-thumb.jpg" alt="img"></a>
+            <a class="small" href="./img6-lg.jpg"><img src="./img6-thumb.jpg" alt="img"></a>
+        </div>
+    </div>
+
+    <script>
+
+        let gallery = document.querySelector('.gallery');
+        let largeImg = document.getElementById('largeImg');
+
+        gallery.onclick = function (event) {
+            event.preventDefault();
+
+            let elemA = event.target.closest('a');
+
+            if (!elemA) return;
+
+            largeImg.src = elemA.href;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p class="text">
+        Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить <a
+            href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+    </p>
+
+    <script>
+
+        let text = document.querySelector('.text');
+
+        text.onclick = function (event) {
+
+            function handleLink(href) {
+                let isLeaving = confirm(`Leave for ${href}?`);
+                if (!isLeaving) return false;
+            }
+
+            let target = event.target.closest('a');
+
+            if (target && text.contains(target)) {
+                return handleLink(target.getAttribute('href'));
+            }
+        };
+
+    </script>
+
+
+</body>
+
+</html>
