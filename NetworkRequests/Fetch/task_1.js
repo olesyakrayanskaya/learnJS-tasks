@@ -3,22 +3,21 @@ async function getUsers(names) {
 
     for (let name of names) {
         let job = fetch(`https://api.github.com/users/${name}`).then(
-            successResponse => {
-                if (successResponse.status != 200) {
+            ok => {
+                if (ok.status != 200) {
                     return null;
                 } else {
-                    return successResponse.json();
+                    return ok.json();
                 }
-            },
-            failResponse => {
-                return null;
             }
         );
         jobs.push(job);
     }
 
-    let results = await Promise.all(jobs);
-
-    return results;
+    return await Promise.all(jobs);
 }
 
+document.addEventListener("DOMContentLoaded", async function() {
+    let u = await getUsers(['iliakan', 'remy', 'no.such.users']);
+    alert(u[0].login)
+});
